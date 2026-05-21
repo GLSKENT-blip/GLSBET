@@ -1070,7 +1070,7 @@
 
     .bottom-cta {
       margin: 4px 14px 0;
-      padding: 20px;
+      padding: 22px;
       border-radius: 26px;
       text-align: center;
       background: linear-gradient(135deg, rgba(0, 229, 255, 0.16), rgba(255, 79, 216, 0.16));
@@ -1091,6 +1091,35 @@
 
     #ctaText {
       display: none;
+    }
+
+    .cta-highlights {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin: 16px auto 18px;
+      max-width: 720px;
+    }
+
+    .cta-highlight {
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.13);
+    }
+
+    .cta-highlight strong {
+      display: block;
+      color: var(--text);
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .cta-highlight span {
+      display: block;
+      color: var(--soft);
+      font-size: 12px;
+      line-height: 1.45;
     }
 
     .footer {
@@ -1194,6 +1223,10 @@
       .bottom-cta {
         margin-left: 22px;
         margin-right: 22px;
+      }
+
+      .cta-highlights {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
       }
     }
 
@@ -1338,6 +1371,7 @@
     <section class="bottom-cta">
       <h2 id="ctaTitle">24Jam Customer Service</h2>
       <p id="ctaText">&#32852;&#31995; WhatsApp &#23458;&#26381;&#26597;&#30475;&#26368;&#26032;&#27963;&#21160;&#12290;&#26412;&#39029;&#38754;&#21482;&#20570;&#21069;&#31471;&#23637;&#31034;&#27169;&#26495;&#65292;&#19981;&#21253;&#21547;&#30495;&#23454;&#20805;&#20540;&#12289;&#19979;&#27880;&#12289;&#25552;&#27454;&#25110;&#36172;&#21338;&#21151;&#33021;&#12290;</p>
+      <div id="ctaHighlights" class="cta-highlights"></div>
       <a id="bottomWhatsapp" class="btn btn-primary" href="#" target="_blank"></a>
     </section>
 
@@ -1819,6 +1853,27 @@
       }
     };
 
+    const CTA_HIGHLIGHTS = {
+      zh: [
+        { title: "\u5feb\u901f\u6ce8\u518c", text: "\u70b9\u51fb\u6ce8\u518c\uff0cWhatsApp \u76f4\u63a5\u8054\u7cfb\u5728\u7ebf\u5ba2\u670d\u3002" },
+        { title: "24Jam \u5728\u7ebf", text: "\u6bcf\u5929\u5904\u7406\u6e38\u620f ID\u3001\u4f18\u60e0\u548c\u4f1a\u5458\u95ee\u9898\u3002" },
+        { title: "Minimum In RM10", text: "\u5c0f\u989d\u4e5f\u53ef\u4ee5\u5f00\u59cb\uff0c\u7b80\u5355\u65b9\u4fbf\u3002" },
+        { title: "Claim Bonus", text: "Welcome\u3001Rebate\u3001VIP \u4f18\u60e0\u90fd\u53ef\u4ee5\u7533\u8bf7\u3002" }
+      ],
+      en: [
+        { title: "Fast Register", text: "Tap register to contact WhatsApp support directly." },
+        { title: "24H Online", text: "Game ID, promotion and member support every day." },
+        { title: "Minimum In RM10", text: "Easy entry for new and returning members." },
+        { title: "Claim Bonus", text: "Welcome, rebate and VIP campaigns can be requested fast." }
+      ],
+      ms: [
+        { title: "Daftar Cepat", text: "Tekan daftar untuk terus hubungi support WhatsApp." },
+        { title: "24Jam Online", text: "Bantu ID game, promosi dan pertanyaan member setiap hari." },
+        { title: "Minimum In RM10", text: "Mudah mula untuk member baru dan lama." },
+        { title: "Claim Bonus", text: "Welcome, rebate dan VIP bonus boleh minta terus." }
+      ]
+    };
+
     let currentLang = localStorage.getItem("glsbetLang") || "zh";
 
     function initSite() {
@@ -1882,6 +1937,23 @@
       renderGames();
       renderPromotions();
       renderProofCards();
+      renderCtaHighlights();
+    }
+
+    function renderCtaHighlights() {
+      const list = CTA_HIGHLIGHTS[currentLang] || CTA_HIGHLIGHTS.zh;
+      const wrap = document.getElementById("ctaHighlights");
+      wrap.innerHTML = "";
+
+      list.forEach(function(item) {
+        const card = document.createElement("div");
+        card.className = "cta-highlight";
+        card.innerHTML = `
+          <strong>${item.title}</strong>
+          <span>${item.text}</span>
+        `;
+        wrap.appendChild(card);
+      });
     }
 
     function renderBonusItems() {
