@@ -663,7 +663,7 @@
     }
 
     .game-card:hover .game-art img {
-      transform: scale(calc(var(--logo-scale, 1) * 1.06));
+      transform: translateY(var(--logo-y, 0px)) scale(calc(var(--logo-scale, 1) * 1.06));
       filter:
         drop-shadow(0 0 18px rgba(255, 255, 255, 0.35))
         drop-shadow(0 14px 24px rgba(0, 0, 0, 0.42));
@@ -712,7 +712,7 @@
       width: 100%;
       max-height: 110px;
       object-fit: contain;
-      transform: scale(var(--logo-scale, 1));
+      transform: translateY(var(--logo-y, 0px)) scale(var(--logo-scale, 1));
       filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.42));
       transition: transform 0.18s ease, filter 0.18s ease;
     }
@@ -1267,6 +1267,15 @@
         font-size: 22px;
       }
     }
+  
+    .bottom-cta { overflow: hidden; position: relative; }
+    .bottom-cta::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 70px; pointer-events: none; background: linear-gradient(90deg, transparent, rgba(31, 18, 58, 0.94)); }
+    .bottom-cta::before { content: ""; position: absolute; top: 0; left: 0; bottom: 0; width: 70px; z-index: 1; pointer-events: none; background: linear-gradient(90deg, rgba(10, 42, 66, 0.94), transparent); }
+    #ctaHighlights.cta-highlights { display: flex; grid-template-columns: none; width: max-content; max-width: none; gap: 12px; margin: 16px 0 18px; animation: ctaMarquee 24s linear infinite; will-change: transform; }
+    #ctaHighlights.cta-highlights:hover { animation-play-state: paused; }
+    #ctaHighlights .cta-highlight { flex: 0 0 230px; min-height: 82px; }
+    @keyframes ctaMarquee { from { transform: translateX(0); } to { transform: translateX(calc(-50% - 6px)); } }
+
   </style>
 </head>
 
@@ -1430,6 +1439,7 @@
           badge: "HOT",
           mark: "918",
           image: "https://megawins-888.net/918kiss.png",
+          logoY: "-20px",
           colorA: "#00d4ff",
           colorB: "#7c3cff"
         },
@@ -1457,6 +1467,7 @@
           badge: "NEW",
           mark: "NT",
           image: "https://megawins-888.net/newtown.png",
+          logoY: "-12px",
           colorA: "#18e0b5",
           colorB: "#2167ff"
         },
@@ -1488,11 +1499,12 @@
           colorB: "#ff7a18"
         },
         {
-          title: "TIGOALS",
-          tag: "TIGOALS gaming provider",
+          title: "TTGOAL",
+          tag: "TTGOAL gaming provider",
           badge: "SLOT",
           mark: "TG",
-          image: "https://tigoals.org/wp-content/uploads/2024/03/tigoals.png",
+          image: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNjQwIDI2MCI+CiAgPGRlZnM+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9ImJnIiBjeD0iNDglIiBjeT0iNDglIiByPSI3NSUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMxNzM5NDUiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIwLjQyIiBzdG9wLWNvbG9yPSIjMGIxZDI4Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMC43OCIgc3RvcC1jb2xvcj0iIzEwMGIxNSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwNTA2MGQiLz4KICAgIDwvcmFkaWFsR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmUiIHgxPSIwIiB4Mj0iMSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzAwZTVmZiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjAuNSIgc3RvcC1jb2xvcj0iI2ZmZDc2YSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmZjRmZDgiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InRleHQiIHgxPSIwIiB4Mj0iMSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2I3ZjFmZiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjAuMzgiIHN0b3AtY29sb3I9IiMzOWI4ZmYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIwLjcyIiBzdG9wLWNvbG9yPSIjMTI2ZWE4Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2U5ZmJmZiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9Imdsb3ciIHg9Ii0zMCUiIHk9Ii0zMCUiIHdpZHRoPSIxNjAlIiBoZWlnaHQ9IjE2MCUiPgogICAgICA8ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iOCIgc3RkRGV2aWF0aW9uPSI3IiBmbG9vZC1jb2xvcj0iIzAwMCIgZmxvb2Qtb3BhY2l0eT0iMC42NSIvPgogICAgICA8ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iMCIgc3RkRGV2aWF0aW9uPSI0IiBmbG9vZC1jb2xvcj0iIzAwZDhmZiIgZmxvb2Qtb3BhY2l0eT0iMC40NSIvPgogICAgPC9maWx0ZXI+CiAgPC9kZWZzPgogIDxyZWN0IHg9IjgiIHk9IjgiIHdpZHRoPSI2MjQiIGhlaWdodD0iMjQ0IiByeD0iMjIiIGZpbGw9InVybCgjYmcpIiBzdHJva2U9InVybCgjbGluZSkiIHN0cm9rZS13aWR0aD0iNSIgb3BhY2l0eT0iMC45OCIvPgogIDxyZWN0IHg9IjI0IiB5PSIyNCIgd2lkdGg9IjU5MiIgaGVpZ2h0PSIyMTIiIHJ4PSIxNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEuNSIgb3BhY2l0eT0iMC4xMiIvPgogIDxnIG9wYWNpdHk9IjAuNDUiPgogICAgPGNpcmNsZSBjeD0iODIiIGN5PSI1NSIgcj0iMy41IiBmaWxsPSIjZmZkNzZhIi8+CiAgICA8Y2lyY2xlIGN4PSI1NjIiIGN5PSI3MCIgcj0iMyIgZmlsbD0iIzAwZTVmZiIvPgogICAgPGNpcmNsZSBjeD0iNTEwIiBjeT0iMjA1IiByPSI0IiBmaWxsPSIjZmZkNzZhIi8+CiAgPC9nPgogIDxnIGZpbHRlcj0idXJsKCNnbG93KSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzggNjEpIj4KICAgIDx0ZXh0IHg9IjAiIHk9IjExMiIgZm9udC1mYW1pbHk9IlRyZWJ1Y2hldCBNUywgQXJpYWwgQmxhY2ssIEFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwOCIgZm9udC13ZWlnaHQ9IjkwMCIgbGV0dGVyLXNwYWNpbmc9Ii03IiBmaWxsPSJ1cmwoI3RleHQpIiBzdHJva2U9IiMwMjEwMWMiIHN0cm9rZS13aWR0aD0iNCIgcGFpbnQtb3JkZXI9InN0cm9rZSI+VFRHT0FMPC90ZXh0PgogICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNTI1IDUwKSBzY2FsZSguNzgpIj4KICAgICAgPGNpcmNsZSBjeD0iMCIgY3k9IjIwIiByPSIyMCIgZmlsbD0iI2UzMjIxYiIvPgogICAgICA8Y2lyY2xlIGN4PSItMjIiIGN5PSI0NCIgcj0iMjAiIGZpbGw9IiNlMzIyMWIiLz4KICAgICAgPGNpcmNsZSBjeD0iMjIiIGN5PSI0NCIgcj0iMjAiIGZpbGw9IiNlMzIyMWIiLz4KICAgICAgPHBhdGggZD0iTTAgMzggQy04IDYyIC0xOCA3OCAtMzIgMTAwIEgzMiBDMTggNzggOCA2MiAwIDM4WiIgZmlsbD0iI2UzMjIxYiIvPgogICAgICA8cGF0aCBkPSJNMCA0OCBDLTUgNjYgLTEwIDgyIC0xNyA5NiBIMTcgQzEwIDgyIDUgNjYgMCA0OFoiIGZpbGw9IiNmZmM1MzMiIG9wYWNpdHk9Ii43MiIvPgogICAgPC9nPgogIDwvZz4KPC9zdmc+",
+          logoY: "-10px",
           colorA: "#00e5ff",
           colorB: "#00a86b"
         },
@@ -1503,6 +1515,7 @@
           mark: "PP",
           image: "https://pragmatic33.org/wp-content/themes/arunika/images/games/slots/pragmaticplay.webp",
           logoScale: 1.28,
+          logoY: "-24px",
           colorA: "#ff8a00",
           colorB: "#ff3d77"
         }
@@ -1614,7 +1627,7 @@
           "\u9ad8\u7ea7\u6e38\u620f\u5927\u5385",
           "Lucky Palace \u5e73\u53f0",
           "\u8d4c\u573a\u98ce\u683c\u5927\u5385",
-          "TIGOALS \u6e38\u620f\u4f9b\u5e94\u5546",
+          "TTGOAL \u6e38\u620f\u4f9b\u5e94\u5546",
           "\u70ed\u95e8\u6e38\u620f\u4f9b\u5e94\u5546"
         ],
         gameCta: "\u62ff ID",
@@ -1707,7 +1720,7 @@
           "Premium game lobby",
           "Lucky Palace platform",
           "Casino style lobby",
-          "TIGOALS gaming provider",
+          "TTGOAL gaming provider",
           "Popular provider games"
         ],
         gameCta: "Get ID",
@@ -1794,7 +1807,7 @@
           "Lobby game premium",
           "Platform Lucky Palace",
           "Lobby gaya casino",
-          "Provider TIGOALS",
+          "Provider TTGOAL",
           "Provider game popular"
         ],
         gameCta: "Minta ID",
@@ -1948,7 +1961,7 @@
       const wrap = document.getElementById("ctaHighlights");
       wrap.innerHTML = "";
 
-      list.forEach(function(item) {
+      list.concat(list).forEach(function(item) {
         const card = document.createElement("div");
         card.className = "cta-highlight";
         card.innerHTML = `
@@ -2005,6 +2018,7 @@
         card.style.setProperty("--game-a", game.colorA);
         card.style.setProperty("--game-b", game.colorB);
         card.style.setProperty("--logo-scale", game.logoScale || 1);
+        card.style.setProperty("--logo-y", game.logoY || "0px");
         card.innerHTML = `
           <div class="game-art">
             <img src="${game.image}" alt="${game.title}">
