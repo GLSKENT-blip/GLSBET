@@ -1233,6 +1233,45 @@
       }
     }
 
+    @media (max-width: 759px) {
+      .promo-card-featured {
+        display: block;
+        border-radius: 18px;
+      }
+
+      .promo-card-featured img {
+        width: 100%;
+        aspect-ratio: auto;
+        padding: 8px 8px 0;
+        display: block;
+      }
+
+      .promo-card-featured .promo-content {
+        display: none;
+      }
+
+      .promo-card-featured .promo-prizes {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        margin-top: 10px;
+      }
+
+      .promo-card-featured .promo-prize {
+        min-height: 58px;
+        padding: 8px 9px;
+        border-radius: 13px;
+        font-size: 12px;
+        text-align: left;
+      }
+
+      .promo-card-featured .promo-prize strong {
+        display: block;
+        margin-top: 3px;
+        font-size: 17px;
+        line-height: 1.05;
+      }
+    }
+
     @media (max-width: 380px) {
       .sports-backdrop::before,
       .sports-backdrop::after {
@@ -1263,8 +1302,71 @@
         grid-template-columns: 98px minmax(0, 1fr);
       }
 
+      .promo-card-featured {
+        display: block;
+        border-radius: 18px;
+        background:
+          linear-gradient(135deg, rgba(255, 216, 77, 0.1), transparent 38%),
+          linear-gradient(315deg, rgba(255, 79, 216, 0.12), transparent 42%),
+          var(--card-strong);
+      }
+
+      .promo-card-featured img {
+        width: 100%;
+        aspect-ratio: auto;
+        padding: 8px 8px 0;
+        display: block;
+      }
+
+      .promo-card-featured .promo-content {
+        padding: 10px 10px 12px;
+      }
+
       .promo-card-featured .promo-title {
-        font-size: 22px;
+        width: auto;
+        margin: 0;
+        padding: 9px 11px;
+        display: block;
+        border-radius: 16px;
+        font-size: 20px;
+        line-height: 1.08;
+        text-align: center;
+      }
+
+      .promo-card-featured .promo-desc {
+        margin-top: 9px;
+        font-size: 13px;
+        line-height: 1.32;
+        text-align: center;
+      }
+
+      .promo-card-featured .promo-line {
+        margin-top: 6px;
+      }
+
+      .promo-card-featured .promo-line-strong {
+        line-height: 1.22;
+      }
+
+      .promo-card-featured .promo-prizes {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        margin-top: 10px;
+      }
+
+      .promo-card-featured .promo-prize {
+        min-height: 58px;
+        padding: 8px 9px;
+        border-radius: 13px;
+        font-size: 12px;
+        text-align: left;
+      }
+
+      .promo-card-featured .promo-prize strong {
+        display: block;
+        margin-top: 3px;
+        font-size: 17px;
+        line-height: 1.05;
       }
     }
   
