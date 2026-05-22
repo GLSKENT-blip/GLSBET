@@ -1533,6 +1533,24 @@
                 100% { filter: brightness(1); }
         }
 
+          @media (max-width: 759px) {
+                  .game-grid .game-card:nth-child(6) .game-art img {
+                            transform: translateY(-44px) scale(var(--logo-scale, 1));
+                  }
+
+                  .game-grid .game-card:nth-child(6):hover .game-art img {
+                            transform: translateY(-44px) scale(calc(var(--logo-scale, 1) * 1.06));
+                  }
+
+                  .game-grid .game-card:nth-child(8) .game-art img {
+                            transform: translateY(-34px) scale(calc(var(--logo-scale, 1) * 1.08));
+                  }
+
+                  .game-grid .game-card:nth-child(8):hover .game-art img {
+                            transform: translateY(-34px) scale(calc(var(--logo-scale, 1) * 1.14));
+                  }
+          }
+
       </style>
 </head>
 
