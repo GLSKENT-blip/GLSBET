@@ -1378,7 +1378,89 @@
     #ctaHighlights .cta-highlight { flex: 0 0 230px; min-height: 82px; }
     @keyframes ctaMarquee { from { transform: translateX(0); } to { transform: translateX(calc(-50% - 6px)); } }
 
-  </style>
+      @media (max-width: 759px) {
+              .promo-card-featured img {
+                        width: 100%;
+                        height: auto;
+                        min-height: 0;
+                        aspect-ratio: auto;
+                        padding: 8px 8px 0;
+                        display: block;
+                        object-fit: contain;
+              }
+
+              .promo-card-featured .promo-content {
+                        padding: 10px 10px 12px;
+                        display: flex;
+                        align-items: stretch;
+                        justify-content: flex-start;
+              }
+
+              .promo-card-featured .promo-title {
+                        width: auto;
+                        margin: 0 0 10px;
+                        padding: 8px 11px;
+                        display: inline-block;
+                        border-radius: 16px;
+                        font-size: 24px;
+                        line-height: 1.08;
+                        text-align: left;
+              }
+
+              .promo-card-featured .promo-line,
+              .promo-card-featured .promo-desc,
+              .promo-card-featured .promo-line-strong {
+                        margin-top: 8px;
+                        font-size: 14px;
+                        line-height: 1.32;
+                        text-align: left;
+              }
+
+              .promo-card-featured .promo-line:first-child,
+              .promo-card-featured .promo-line-strong {
+                        color: #fff16a;
+                        font-weight: 900;
+                        text-shadow: 0 0 12px rgba(255, 216, 77, 0.35);
+              }
+
+              .promo-card-featured .promo-prizes {
+                        grid-template-columns: repeat(2, minmax(0, 1fr));
+                        gap: 8px;
+                        margin-top: 12px;
+              }
+
+              .promo-card-featured .promo-prize {
+                        min-height: 58px;
+                        padding: 8px 9px;
+                        border-radius: 13px;
+                        font-size: 12px;
+                        text-align: left;
+              }
+
+              .promo-card-featured .promo-prize strong {
+                        display: block;
+                        margin-top: 3px;
+                        font-size: 17px;
+                        line-height: 1.05;
+              }
+
+              .promo-card-featured .promo-meta {
+                        margin-top: 12px;
+                        font-size: 12px;
+                        line-height: 1.25;
+                        text-align: left;
+              }
+
+              .promo-card-featured .promo-btn {
+                        width: fit-content;
+                        max-width: 100%;
+                        margin-top: 10px;
+                        padding: 8px 12px;
+                        font-size: 12px;
+              }
+      }
+
+      </style>
 </head>
 
 <body>
