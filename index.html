@@ -1233,45 +1233,6 @@
       }
     }
 
-    @media (max-width: 759px) {
-      .promo-card-featured {
-        display: block;
-        border-radius: 18px;
-      }
-
-      .promo-card-featured img {
-        width: 100%;
-        aspect-ratio: auto;
-        padding: 8px 8px 0;
-        display: block;
-      }
-
-      .promo-card-featured .promo-content {
-        display: none;
-      }
-
-      .promo-card-featured .promo-prizes {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 8px;
-        margin-top: 10px;
-      }
-
-      .promo-card-featured .promo-prize {
-        min-height: 58px;
-        padding: 8px 9px;
-        border-radius: 13px;
-        font-size: 12px;
-        text-align: left;
-      }
-
-      .promo-card-featured .promo-prize strong {
-        display: block;
-        margin-top: 3px;
-        font-size: 17px;
-        line-height: 1.05;
-      }
-    }
-
     @media (max-width: 380px) {
       .sports-backdrop::before,
       .sports-backdrop::after {
@@ -1302,71 +1263,8 @@
         grid-template-columns: 98px minmax(0, 1fr);
       }
 
-      .promo-card-featured {
-        display: block;
-        border-radius: 18px;
-        background:
-          linear-gradient(135deg, rgba(255, 216, 77, 0.1), transparent 38%),
-          linear-gradient(315deg, rgba(255, 79, 216, 0.12), transparent 42%),
-          var(--card-strong);
-      }
-
-      .promo-card-featured img {
-        width: 100%;
-        aspect-ratio: auto;
-        padding: 8px 8px 0;
-        display: block;
-      }
-
-      .promo-card-featured .promo-content {
-        padding: 10px 10px 12px;
-      }
-
       .promo-card-featured .promo-title {
-        width: auto;
-        margin: 0;
-        padding: 9px 11px;
-        display: block;
-        border-radius: 16px;
-        font-size: 20px;
-        line-height: 1.08;
-        text-align: center;
-      }
-
-      .promo-card-featured .promo-desc {
-        margin-top: 9px;
-        font-size: 13px;
-        line-height: 1.32;
-        text-align: center;
-      }
-
-      .promo-card-featured .promo-line {
-        margin-top: 6px;
-      }
-
-      .promo-card-featured .promo-line-strong {
-        line-height: 1.22;
-      }
-
-      .promo-card-featured .promo-prizes {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 8px;
-        margin-top: 10px;
-      }
-
-      .promo-card-featured .promo-prize {
-        min-height: 58px;
-        padding: 8px 9px;
-        border-radius: 13px;
-        font-size: 12px;
-        text-align: left;
-      }
-
-      .promo-card-featured .promo-prize strong {
-        display: block;
-        margin-top: 3px;
-        font-size: 17px;
-        line-height: 1.05;
+        font-size: 22px;
       }
     }
   
@@ -1378,180 +1276,7 @@
     #ctaHighlights .cta-highlight { flex: 0 0 230px; min-height: 82px; }
     @keyframes ctaMarquee { from { transform: translateX(0); } to { transform: translateX(calc(-50% - 6px)); } }
 
-      @media (max-width: 759px) {
-              .promo-card-featured img {
-                        width: 100%;
-                        height: auto;
-                        min-height: 0;
-                        aspect-ratio: auto;
-                        padding: 8px 8px 0;
-                        display: block;
-                        object-fit: contain;
-              }
-
-              .promo-card-featured .promo-content {
-                        padding: 10px 10px 12px;
-                        display: flex;
-                        align-items: stretch;
-                        justify-content: flex-start;
-              }
-
-              .promo-card-featured .promo-title {
-                        width: auto;
-                        margin: 0 0 10px;
-                        padding: 8px 11px;
-                        display: inline-block;
-                        border-radius: 16px;
-                        font-size: 24px;
-                        line-height: 1.08;
-                        text-align: left;
-              }
-
-              .promo-card-featured .promo-line,
-              .promo-card-featured .promo-desc,
-              .promo-card-featured .promo-line-strong {
-                        margin-top: 8px;
-                        font-size: 14px;
-                        line-height: 1.32;
-                        text-align: left;
-              }
-
-              .promo-card-featured .promo-line:first-child,
-              .promo-card-featured .promo-line-strong {
-                        color: #fff16a;
-                        font-weight: 900;
-                        text-shadow: 0 0 12px rgba(255, 216, 77, 0.35);
-              }
-
-              .promo-card-featured .promo-prizes {
-                        grid-template-columns: repeat(2, minmax(0, 1fr));
-                        gap: 8px;
-                        margin-top: 12px;
-              }
-
-              .promo-card-featured .promo-prize {
-                        min-height: 58px;
-                        padding: 8px 9px;
-                        border-radius: 13px;
-                        font-size: 12px;
-                        text-align: left;
-              }
-
-              .promo-card-featured .promo-prize strong {
-                        display: block;
-                        margin-top: 3px;
-                        font-size: 17px;
-                        line-height: 1.05;
-              }
-
-              .promo-card-featured .promo-meta {
-                        margin-top: 12px;
-                        font-size: 12px;
-                        line-height: 1.25;
-                        text-align: left;
-              }
-
-              .promo-card-featured .promo-btn {
-                        width: fit-content;
-                        max-width: 100%;
-                        margin-top: 10px;
-                        padding: 8px 12px;
-                        font-size: 12px;
-              }
-      }
-
-          @media (min-width: 760px) {
-                  .promo-card-featured img {
-                            width: 100%;
-                            height: 100%;
-                            min-height: 360px;
-                            aspect-ratio: auto;
-                            object-fit: cover;
-                            padding: 0;
-                  }
-          }
-
-          @media (min-width: 760px) {
-                  .promo-card-featured img {
-                            object-position: left center;
-                  }
-          }
-
-          @media (min-width: 760px) {
-                  .promo-card-featured {
-                            grid-template-columns: minmax(400px, 430px) minmax(0, 1fr);
-                  }
-
-                  .promo-card-featured img {
-                            object-position: center center;
-                  }
-          }
-
-          .promo-prize {
-                  cursor: pointer;
-                  user-select: none;
-                  transition:
-                    background 0.18s ease,
-                            border-color 0.18s ease,
-                            box-shadow 0.18s ease,
-                            transform 0.18s ease;
-                  -webkit-tap-highlight-color: transparent;
-          }
-
-        .promo-prize:hover,
-        .promo-prize:focus-visible {
-                border-color: rgba(255, 216, 77, 0.72);
-                background:
-                  linear-gradient(135deg, rgba(255, 216, 77, 0.2), rgba(255, 255, 255, 0.08)),
-                          rgba(255, 255, 255, 0.1);
-                box-shadow:
-                  0 0 0 1px rgba(255, 216, 77, 0.24),
-                          0 0 20px rgba(255, 216, 77, 0.22);
-        }
-
-        .promo-prize:active,
-        .promo-prize.is-glowing {
-                border-color: rgba(57, 255, 136, 0.92);
-                background:
-                  radial-gradient(circle at 22% 18%, rgba(255, 255, 255, 0.44), transparent 32%),
-                          linear-gradient(135deg, rgba(57, 255, 136, 0.28), rgba(255, 216, 77, 0.2)),
-                          rgba(255, 255, 255, 0.13);
-                box-shadow:
-                  0 0 0 2px rgba(57, 255, 136, 0.24),
-                          0 0 24px rgba(57, 255, 136, 0.42),
-                          0 0 38px rgba(255, 216, 77, 0.28);
-                transform: translateY(-1px) scale(1.015);
-        }
-
-        .promo-prize.is-glowing {
-                animation: prizeGlowPulse 0.42s ease;
-        }
-
-        @keyframes prizeGlowPulse {
-                0% { filter: brightness(1); }
-                45% { filter: brightness(1.34); }
-                100% { filter: brightness(1); }
-        }
-
-          @media (max-width: 759px) {
-                  .game-grid .game-card:nth-child(6) .game-art img {
-                            transform: translateY(-44px) scale(var(--logo-scale, 1));
-                  }
-
-                  .game-grid .game-card:nth-child(6):hover .game-art img {
-                            transform: translateY(-44px) scale(calc(var(--logo-scale, 1) * 1.06));
-                  }
-
-                  .game-grid .game-card:nth-child(8) .game-art img {
-                            transform: translateY(-34px) scale(calc(var(--logo-scale, 1) * 1.08));
-                  }
-
-                  .game-grid .game-card:nth-child(8):hover .game-art img {
-                            transform: translateY(-34px) scale(calc(var(--logo-scale, 1) * 1.14));
-                  }
-          }
-
-      </style>
+  </style>
 </head>
 
 <body>
@@ -1679,7 +1404,7 @@
     const SITE_CONFIG = {
       siteName: "GLSBET Gaming Center",
       tagline: "Esports Style Entertainment",
-      whatsappLink: "https://wa.me/60182884489",
+      whatsappLink: "https://wa.me/601153450054",
 
       logoImage: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=300&q=90",
       bannerImage: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1600&q=90",
@@ -2390,20 +2115,7 @@
       });
     }
 
-    document.addEventListener("click", function(event) {
-            const prizeCard = event.target.closest(".promo-prize");
-            if (!prizeCard) return;
-
-            prizeCard.classList.remove("is-glowing");
-            void prizeCard.offsetWidth;
-            prizeCard.classList.add("is-glowing");
-
-            window.setTimeout(function() {
-                      prizeCard.classList.remove("is-glowing");
-            }, 430);
-    });
-
-        initSite();
+    initSite();
   </script>
 </body>
 </html>
