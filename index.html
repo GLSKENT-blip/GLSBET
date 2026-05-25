@@ -1563,8 +1563,8 @@
     <div class="crisp-phone-card" role="dialog" aria-modal="true" aria-labelledby="crispPhoneTitle">
       <div class="crisp-phone-head">
         <div>
-          <h2 id="crispPhoneTitle" class="crisp-phone-title">&#30041;&#19979; WhatsApp &#21495;&#30721;</h2>
-          <p class="crisp-phone-desc">&#23458;&#26381;&#20250;&#29992;&#36825;&#20010;&#21495;&#30721;&#22238;&#22797;&#24744;&#12290;</p>
+          <h2 id="crispPhoneTitle" class="crisp-phone-title">Masukkan nombor WhatsApp anda</h2>
+          <p id="crispPhoneDesc" class="crisp-phone-desc">Sila masukkan nombor WhatsApp anda supaya customer service boleh hubungi anda semula nanti.</p>
         </div>
         <button id="crispPhoneClose" class="crisp-phone-close" type="button" aria-label="Close">X</button>
       </div>
@@ -2340,6 +2340,36 @@
       const input = document.getElementById("crispPhoneInput");
       const startButton = document.getElementById("crispPhoneStart");
       const closeButton = document.getElementById("crispPhoneClose");
+      const title = document.getElementById("crispPhoneTitle");
+      const desc = document.getElementById("crispPhoneDesc");
+      const crispPromptCopy = {
+        ms: {
+          title: "Masukkan nombor WhatsApp anda",
+          desc: "Sila masukkan nombor WhatsApp anda supaya customer service boleh hubungi anda semula nanti.",
+          button: "Mula Chat",
+          placeholder: "Contoh: 0123456789"
+        },
+        en: {
+          title: "Enter your WhatsApp number",
+          desc: "Please enter your WhatsApp number so customer service can contact you later.",
+          button: "Start Chat",
+          placeholder: "Example: 0123456789"
+        },
+        zh: {
+          title: "\u8bf7\u8f93\u5165\u60a8\u7684 WhatsApp \u53f7\u7801",
+          desc: "\u8bf7\u8f93\u5165\u60a8\u7684 WhatsApp \u53f7\u7801\uff0c\u4ee5\u4fbf\u5ba2\u670d\u4e4b\u540e\u518d\u8054\u7cfb\u60a8\u3002",
+          button: "\u5f00\u59cb\u804a\u5929",
+          placeholder: "\u4f8b\u5982\uff1a0123456789"
+        }
+      };
+
+      function updatePromptLanguage() {
+        const copy = crispPromptCopy[currentLang] || crispPromptCopy.ms;
+        title.textContent = copy.title;
+        desc.textContent = copy.desc;
+        startButton.textContent = copy.button;
+        input.placeholder = copy.placeholder;
+      }
 
       function normalizePhone(value) {
         return value.replace(/[^\d+]/g, "").trim();
@@ -2349,7 +2379,10 @@
         localStorage.setItem("glsbetWhatsapp", phone);
         window.$crisp = window.$crisp || [];
         window.$crisp.push(["set", "user:phone", [phone]]);
-        window.$crisp.push(["set", "session:data", [[["whatsapp", phone]]]]);
+        window.$crisp.push(["set", "session:data", [[
+          ["whatsapp_number", phone],
+          ["site_language", currentLang]
+        ]]]);
       }
 
       function openCrispChat() {
@@ -2359,6 +2392,7 @@
       }
 
       function showPhonePrompt() {
+        updatePromptLanguage();
         modal.hidden = false;
         input.classList.remove("is-error");
         setTimeout(function() {
