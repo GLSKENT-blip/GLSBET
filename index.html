@@ -1294,12 +1294,6 @@
         </div>
       </a>
 
-      <div class="language-switch" aria-label="Language selector">
-        <button class="lang-btn" type="button" data-lang="zh">&#20013;&#25991;</button>
-        <button class="lang-btn" type="button" data-lang="en">EN</button>
-        <button class="lang-btn" type="button" data-lang="ms">BM</button>
-      </div>
-
     </div>
   </header>
 
@@ -1312,6 +1306,11 @@
         <div class="hero-footballer" aria-hidden="true"></div>
 
         <div class="hero-content">
+          <div class="language-switch" aria-label="Language selector">
+            <button class="lang-btn" type="button" data-lang="ms">BM</button>
+            <button class="lang-btn" type="button" data-lang="en">EN</button>
+            <button class="lang-btn" type="button" data-lang="zh">&#20013;&#25991;</button>
+          </div>
           <h1 id="heroTitle" class="hero-title"></h1>
           <p id="heroText" class="hero-text"></p>
 
@@ -1890,11 +1889,11 @@
       ]
     };
 
-    let currentLang = localStorage.getItem("glsbetLang") || "zh";
+    let currentLang = localStorage.getItem("glsbetLang") || "ms";
 
     function initSite() {
       if (!LANG_CONFIG[currentLang]) {
-        currentLang = "zh";
+        currentLang = "ms";
       }
       document.title = SITE_CONFIG.siteName;
       document.getElementById("siteName").textContent = SITE_CONFIG.siteName;
@@ -1920,7 +1919,7 @@
     }
 
     function applyLanguage(lang) {
-      currentLang = LANG_CONFIG[lang] ? lang : "zh";
+      currentLang = LANG_CONFIG[lang] ? lang : "ms";
       localStorage.setItem("glsbetLang", currentLang);
 
       const copy = LANG_CONFIG[currentLang];
