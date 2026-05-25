@@ -1889,7 +1889,12 @@
       ]
     };
 
+    const LANGUAGE_VERSION = "hero-language-switch-v2";
     let currentLang = localStorage.getItem("glsbetLang") || "ms";
+    if (localStorage.getItem("glsbetLangVersion") !== LANGUAGE_VERSION) {
+      currentLang = "ms";
+      localStorage.setItem("glsbetLangVersion", LANGUAGE_VERSION);
+    }
 
     function initSite() {
       if (!LANG_CONFIG[currentLang]) {
