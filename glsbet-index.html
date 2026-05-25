@@ -1227,6 +1227,34 @@
         font-size: 22px;
       }
     }
+
+    @media (max-width: 640px) {
+      .promo-card-featured img {
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        aspect-ratio: auto;
+        object-fit: contain;
+        padding: 10px;
+      }
+
+      .promo-card-featured .promo-content {
+        padding: 0 16px 16px;
+      }
+
+      .promo-card-featured .promo-title,
+      .promo-card-featured .promo-desc,
+      .promo-card-featured .promo-meta {
+        display: none;
+      }
+
+      .promo-card-featured .promo-btn {
+        width: 100%;
+        min-height: 42px;
+        margin-top: 0;
+        justify-content: center;
+      }
+    }
   </style>
 </head>
 
