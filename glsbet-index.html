@@ -932,11 +932,24 @@
       border: 1px solid rgba(255, 255, 255, 0.16);
       font-size: 12px;
       font-weight: 900;
+      cursor: pointer;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease, background 0.18s ease;
     }
 
     .promo-prize strong {
       color: #ffd84d;
       font-size: 15px;
+    }
+
+    .promo-prize.is-lit,
+    .promo-prize:active {
+      transform: translateY(-1px);
+      border-color: rgba(255, 216, 77, 0.9);
+      background: rgba(255, 216, 77, 0.14);
+      box-shadow:
+        0 0 0 1px rgba(255, 216, 77, 0.35),
+        0 0 26px rgba(255, 216, 77, 0.62),
+        inset 0 0 18px rgba(255, 255, 255, 0.14);
     }
 
     .promo-content {
@@ -1480,6 +1493,7 @@
           badge: "LIVE",
           mark: "LP",
           image: "https://megawins-888.net/lpe88.png",
+          logoY: "-18px",
           colorA: "#39ff88",
           colorB: "#00b8ff"
         },
@@ -1884,6 +1898,7 @@
 
       setupLanguageButtons();
       applyLanguage(currentLang);
+      setupPrizeGlow();
       bindButtons();
     }
 
@@ -1929,6 +1944,24 @@
       renderGames();
       renderPromotions();
       renderProofCards();
+      setupPrizeGlow();
+    }
+
+    function setupPrizeGlow() {
+      document.querySelectorAll(".promo-prize").forEach(function(prize) {
+        if (prize.dataset.glowReady) {
+          return;
+        }
+        prize.dataset.glowReady = "true";
+        prize.addEventListener("click", function() {
+          prize.classList.remove("is-lit");
+          void prize.offsetWidth;
+          prize.classList.add("is-lit");
+          window.setTimeout(function() {
+            prize.classList.remove("is-lit");
+          }, 850);
+        });
+      });
     }
 
     function renderBonusItems() {
@@ -1977,6 +2010,7 @@
         card.style.setProperty("--game-a", game.colorA);
         card.style.setProperty("--game-b", game.colorB);
         card.style.setProperty("--logo-scale", game.logoScale || 1);
+        card.style.setProperty("--logo-y", game.logoY || "0px");
         card.innerHTML = `
           <div class="game-art">
             <img src="${game.image}" alt="${game.title}">
