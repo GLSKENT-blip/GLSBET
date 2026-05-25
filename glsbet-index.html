@@ -1126,6 +1126,113 @@
       font-weight: 900;
     }
 
+    .crisp-custom-launcher {
+      position: fixed;
+      right: 18px;
+      bottom: 20px;
+      z-index: 70;
+      width: 62px;
+      height: 62px;
+      border: 0;
+      border-radius: 50%;
+      color: #fff;
+      background: linear-gradient(135deg, #246bff, #19c8ff);
+      box-shadow: 0 16px 36px rgba(18, 120, 255, 0.42);
+      font-size: 15px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .crisp-phone-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 90;
+      display: grid;
+      place-items: end center;
+      padding: 18px;
+      background: rgba(3, 7, 24, 0.46);
+    }
+
+    .crisp-phone-modal[hidden] {
+      display: none;
+    }
+
+    .crisp-phone-card {
+      width: min(360px, 100%);
+      margin-left: auto;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 18px;
+      padding: 18px;
+      background: rgba(12, 18, 42, 0.96);
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.38);
+      color: var(--text);
+    }
+
+    .crisp-phone-head {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .crisp-phone-title {
+      margin: 0 0 5px;
+      font-size: 18px;
+      line-height: 1.2;
+      font-weight: 900;
+    }
+
+    .crisp-phone-desc {
+      margin: 0;
+      color: var(--soft);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .crisp-phone-close {
+      width: 32px;
+      height: 32px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 50%;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.08);
+      cursor: pointer;
+    }
+
+    .crisp-phone-input {
+      width: 100%;
+      min-height: 46px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 12px;
+      padding: 0 13px;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.09);
+      font-size: 16px;
+      outline: 0;
+    }
+
+    .crisp-phone-input::placeholder {
+      color: rgba(238, 243, 255, 0.5);
+    }
+
+    .crisp-phone-input.is-error {
+      border-color: #ff5b7d;
+      box-shadow: 0 0 0 3px rgba(255, 91, 125, 0.18);
+    }
+
+    .crisp-phone-start {
+      width: 100%;
+      min-height: 46px;
+      margin-top: 12px;
+      border: 0;
+      border-radius: 999px;
+      color: #07102a;
+      background: linear-gradient(90deg, #3cff88, #19d6ff);
+      font-weight: 900;
+      cursor: pointer;
+    }
+
     @media (min-width: 760px) {
       .topbar-inner,
       .hero,
@@ -1400,6 +1507,21 @@
       Front-end display template only. No real gambling, deposit, withdrawal or betting function is included.
     </footer>
   </main>
+
+  <button id="crispCustomLauncher" class="crisp-custom-launcher" type="button" aria-label="Open chat">Chat</button>
+  <div id="crispPhoneModal" class="crisp-phone-modal" hidden>
+    <div class="crisp-phone-card" role="dialog" aria-modal="true" aria-labelledby="crispPhoneTitle">
+      <div class="crisp-phone-head">
+        <div>
+          <h2 id="crispPhoneTitle" class="crisp-phone-title">&#30041;&#19979; WhatsApp &#21495;&#30721;</h2>
+          <p class="crisp-phone-desc">&#23458;&#26381;&#20250;&#29992;&#36825;&#20010;&#21495;&#30721;&#22238;&#22797;&#24744;&#12290;</p>
+        </div>
+        <button id="crispPhoneClose" class="crisp-phone-close" type="button" aria-label="Close">X</button>
+      </div>
+      <input id="crispPhoneInput" class="crisp-phone-input" type="tel" inputmode="tel" autocomplete="tel" placeholder="0123456789" />
+      <button id="crispPhoneStart" class="crisp-phone-start" type="button">&#24320;&#22987;&#32842;&#22825;</button>
+    </div>
+  </div>
 
   <script>
     /*
@@ -2105,6 +2227,7 @@
   <script type="text/javascript">
     window.$crisp = [];
     window.CRISP_WEBSITE_ID = "563e2760-31b0-4c5f-a46d-674374c13b76";
+    window.$crisp.push(["do", "chat:hide"]);
     (function() {
       d = document;
       s = d.createElement("script");
@@ -2112,6 +2235,78 @@
       s.async = 1;
       d.getElementsByTagName("head")[0].appendChild(s);
     })();
+  </script>
+  <script>
+    function setupCrispWhatsappPrompt() {
+      const launcher = document.getElementById("crispCustomLauncher");
+      const modal = document.getElementById("crispPhoneModal");
+      const input = document.getElementById("crispPhoneInput");
+      const startButton = document.getElementById("crispPhoneStart");
+      const closeButton = document.getElementById("crispPhoneClose");
+
+      function normalizePhone(value) {
+        return value.replace(/[^\d+]/g, "").trim();
+      }
+
+      function rememberWhatsapp(phone) {
+        localStorage.setItem("glsbetWhatsapp", phone);
+        window.$crisp = window.$crisp || [];
+        window.$crisp.push(["set", "user:phone", [phone]]);
+        window.$crisp.push(["set", "session:data", [[["whatsapp", phone]]]]);
+      }
+
+      function openCrispChat() {
+        window.$crisp = window.$crisp || [];
+        window.$crisp.push(["do", "chat:show"]);
+        window.$crisp.push(["do", "chat:open"]);
+      }
+
+      function showPhonePrompt() {
+        modal.hidden = false;
+        input.classList.remove("is-error");
+        setTimeout(function() {
+          input.focus();
+        }, 40);
+      }
+
+      launcher.addEventListener("click", function() {
+        const savedPhone = localStorage.getItem("glsbetWhatsapp");
+        if (savedPhone) {
+          rememberWhatsapp(savedPhone);
+          openCrispChat();
+          return;
+        }
+        showPhonePrompt();
+      });
+
+      startButton.addEventListener("click", function() {
+        const phone = normalizePhone(input.value);
+        if (!phone) {
+          input.classList.add("is-error");
+          input.focus();
+          return;
+        }
+        rememberWhatsapp(phone);
+        modal.hidden = true;
+        openCrispChat();
+      });
+
+      input.addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+          startButton.click();
+        }
+      });
+
+      closeButton.addEventListener("click", function() {
+        modal.hidden = true;
+      });
+
+      window.$crisp.push(["on", "chat:closed", function() {
+        window.$crisp.push(["do", "chat:hide"]);
+      }]);
+    }
+
+    setupCrispWhatsappPrompt();
   </script>
 </body>
 </html>
