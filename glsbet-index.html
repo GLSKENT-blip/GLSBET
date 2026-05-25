@@ -1239,19 +1239,38 @@
       }
 
       .promo-card-featured .promo-content {
-        padding: 0 16px 16px;
+        padding: 16px;
       }
 
       .promo-card-featured .promo-title,
       .promo-card-featured .promo-desc,
       .promo-card-featured .promo-meta {
-        display: none;
+        display: block;
+      }
+
+      .promo-card-featured .promo-title {
+        width: 100%;
+        border-radius: 18px;
+        font-size: 22px;
+      }
+
+      .promo-card-featured .promo-desc {
+        font-size: 14px;
+        line-height: 1.55;
+      }
+
+      .promo-prizes {
+        grid-template-columns: 1fr;
+      }
+
+      .promo-prize-left,
+      .promo-prize-right {
+        grid-column: auto;
       }
 
       .promo-card-featured .promo-btn {
         width: 100%;
         min-height: 42px;
-        margin-top: 0;
         justify-content: center;
       }
     }
